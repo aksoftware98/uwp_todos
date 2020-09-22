@@ -33,10 +33,10 @@ namespace ToDos.UWP
             this.InitializeComponent();
         }
 
-        string[] scopes = new[] { "https://ahmadmozaffar.onmicrosoft.com/540729f1-17aa-4bf9-a2db-4837442426fd/Events.Manage" };
-        private static string clientId = "b8e80483-cf1f-49bc-85e9-a02aba505123";
-        private static string authority = "https://ahmadmozaffar.b2clogin.com/tfp/ahmadmozaffar.onmicrosoft.com/B2C_1_sign_in_up";
-        private static string domain = "ahmadmozaffar.onmicrosoft.com";
+        string[] scopes = new[] { "{YOUR_SCOPE_ID}" };
+        private static string clientId = "{YOUR_CLIENT_APP_ID}";
+        private static string authority = "https://{YOUR_ORGANIZATION_NAME}.b2clogin.com/tfp/{YOUR_ORGANIZATION_NAME}.onmicrosoft.com/{YOUR_SIGN_UP_IN_POLICY}";
+        private static string domain = "{YOUR_ORGANIZATION_NAME}.onmicrosoft.com";
 
         private static IPublicClientApplication publicApplication;
         private static AuthenticationResult authResult;
@@ -74,7 +74,7 @@ namespace ToDos.UWP
             publicApplication = PublicClientApplicationBuilder.Create(clientId)
                 .WithB2CAuthority(authority)
                 .WithUseCorporateNetwork(false)
-                .WithRedirectUri("https://ahmadmozaffar.b2clogin.com/oauth2/nativeclient")
+                .WithRedirectUri("https://{YOUR_ORGANIZATION_NAME}.b2clogin.com/oauth2/nativeclient")
                 .Build();
 
             IEnumerable<IAccount> accounts = await publicApplication.GetAccountsAsync();
